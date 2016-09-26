@@ -25,7 +25,9 @@
     "enableTranslation": true,
     "nativeLanguage": "fr",
     "languages": [
-      "fr"
+      "fr",
+      "en",
+      "tr"
     ]
   }
 }
