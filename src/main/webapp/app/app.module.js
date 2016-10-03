@@ -3,15 +3,14 @@
 
     angular
         .module('blogApp', [
-            'ngStorage',
+            'ngStorage', 
             'tmh.dynamicLocale',
-            'pascalprecht.translate',
+            'pascalprecht.translate', 
             'ngResource',
             'ngCookies',
             'ngAria',
             'ngCacheBuster',
             'ngFileUpload',
-            'ngSanitize',
             'ui.bootstrap',
             'ui.bootstrap.datetimepicker',
             'ui.router',
