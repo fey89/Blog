@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import org.jhipster.blog.domain.Entry;
 
 import org.jhipster.blog.repository.EntryRepository;
+import org.jhipster.blog.security.SecurityUtils;
 import org.jhipster.blog.web.rest.util.HeaderUtil;
 import org.jhipster.blog.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -31,7 +32,7 @@ import java.util.Optional;
 public class EntryResource {
 
     private final Logger log = LoggerFactory.getLogger(EntryResource.class);
-        
+
     @Inject
     private EntryRepository entryRepository;
 
@@ -95,7 +96,7 @@ public class EntryResource {
     public ResponseEntity<List<Entry>> getAllEntries(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Entries");
-        Page<Entry> page = entryRepository.findAll(pageable);
+        Page<Entry> page = entryRepository.findByBlogUserLoginOrderByDateDesc(SecurityUtils.getCurrentUserLogin(),pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/entries");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -27,7 +27,7 @@ import java.util.Optional;
 public class BlogResource {
 
     private final Logger log = LoggerFactory.getLogger(BlogResource.class);
-        
+
     @Inject
     private BlogRepository blogRepository;
 
@@ -88,7 +88,7 @@ public class BlogResource {
     @Timed
     public List<Blog> getAllBlogs() {
         log.debug("REST request to get all Blogs");
-        List<Blog> blogs = blogRepository.findAll();
+        List<Blog> blogs = blogRepository.findByUserIsCurrentUser();
         return blogs;
     }
 
